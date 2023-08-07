@@ -1,0 +1,8 @@
+package com.diavolo.mynewz.utils
+
+/**
+ * Written with passion by Ikhsan Hidayat on 07/08/2023.
+ */
+object AppConstant {
+    const val API_KEY = "4ab3c1c73bde4edbb9709e6cc9bcf658"
+}
