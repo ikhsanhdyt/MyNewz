@@ -5,4 +5,6 @@ package com.diavolo.mynewz.utils
  */
 object AppConstant {
     const val API_KEY = "4ab3c1c73bde4edbb9709e6cc9bcf658"
+    val CATEGORY_LIST =
+        listOf("Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology")
 }
