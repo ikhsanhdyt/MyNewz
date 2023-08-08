@@ -3,6 +3,7 @@ package com.diavolo.mynewz.di.component
 import android.content.Context
 import com.diavolo.mynewz.MyNewzApplication
 import com.diavolo.mynewz.data.api.NetworkService
+import com.diavolo.mynewz.data.repository.NewsArticleRepository
 import com.diavolo.mynewz.data.repository.NewsSourceRepository
 import com.diavolo.mynewz.di.ApplicationContext
 import com.diavolo.mynewz.di.module.ApplicationModule
@@ -20,9 +21,8 @@ interface ApplicationComponent {
 
     @ApplicationContext
     fun getContext(): Context
-
     fun getNetworkService(): NetworkService
-
     fun getNewsSourceRepository(): NewsSourceRepository
+    fun getNewsArticleRepository(): NewsArticleRepository
 
 }

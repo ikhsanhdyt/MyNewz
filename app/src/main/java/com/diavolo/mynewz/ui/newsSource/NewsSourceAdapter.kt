@@ -18,17 +18,14 @@ class NewsSourceAdapter(private val itemClick: (Source) -> Unit) :
     fun setItems(items: List<Source>) {
         clearItems()
         addItems(items)
-        notifyDataSetChanged()
     }
 
     fun addItems(items: List<Source>) {
         this.items.addAll(items)
-        notifyDataSetChanged()
     }
 
     fun clearItems() {
         this.items.clear()
-        notifyDataSetChanged()
     }
 
     class NewsSourceViewHolder(private val binding: ItemNewsSourceBinding, val itemClick: (Source) -> Unit) :

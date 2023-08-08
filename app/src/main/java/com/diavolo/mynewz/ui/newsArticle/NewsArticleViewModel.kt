@@ -1,11 +1,12 @@
-package com.diavolo.mynewz.ui.newsSource
+package com.diavolo.mynewz.ui.newsArticle
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.diavolo.mynewz.data.model.Article
 import com.diavolo.mynewz.data.model.Source
-import com.diavolo.mynewz.data.repository.NewsSourceRepository
+import com.diavolo.mynewz.data.repository.NewsArticleRepository
 import com.diavolo.mynewz.ui.base.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,20 +17,20 @@ import kotlinx.coroutines.launch
 /**
  * Written with passion by Ikhsan Hidayat on 08/08/2023.
  */
-class NewsSourceViewModel(private val repository: NewsSourceRepository) : ViewModel() {
+class NewsArticleViewModel(private val repository: NewsArticleRepository) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<UiState<List<Source>>>(UiState.Loading)
+    private val _uiState = MutableStateFlow<UiState<List<Article>>>(UiState.Loading)
 
-    val uiState: StateFlow<UiState<List<Source>>> = _uiState
+    val uiState: StateFlow<UiState<List<Article>>> = _uiState
 
     private val _intentExtrasFlow = MutableStateFlow<Bundle?>(null)
 
     val intentExtrasFlow: StateFlow<Bundle?>
         get() = _intentExtrasFlow.asStateFlow()
 
-    fun fetchSources(category: String) {
+    fun fetchArticle(category: String) {
         viewModelScope.launch {
-            repository.getSourceList(category)
+            repository.getArticleList(category)
                 .catch { e ->
                     _uiState.value = UiState.Error(e.toString())
                 }

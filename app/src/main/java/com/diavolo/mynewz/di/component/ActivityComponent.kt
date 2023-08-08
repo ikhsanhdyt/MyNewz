@@ -3,6 +3,7 @@ package com.diavolo.mynewz.di.component
 import com.diavolo.mynewz.MyNewzApplication
 import com.diavolo.mynewz.di.ActivityScope
 import com.diavolo.mynewz.di.module.ActivityModule
+import com.diavolo.mynewz.ui.newsArticle.NewsArticleActivity
 import com.diavolo.mynewz.ui.newsCategory.NewsCategoryActivity
 import com.diavolo.mynewz.ui.newsSource.NewsSourceActivity
 import dagger.Component
@@ -16,5 +17,6 @@ interface ActivityComponent {
 
     fun inject(activity: NewsCategoryActivity)
     fun inject(activity: NewsSourceActivity)
+    fun inject(activity: NewsArticleActivity)
 
 }
