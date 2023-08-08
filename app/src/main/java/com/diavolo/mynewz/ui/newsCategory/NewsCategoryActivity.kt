@@ -14,6 +14,7 @@ import com.diavolo.mynewz.databinding.ActivityNewsCategoryBinding
 import com.diavolo.mynewz.di.component.DaggerActivityComponent
 import com.diavolo.mynewz.di.module.ActivityModule
 import com.diavolo.mynewz.ui.base.UiState
+import com.diavolo.mynewz.ui.newsSource.NewsSourceActivity
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +23,6 @@ class NewsCategoryActivity : AppCompatActivity() {
     @Inject
     lateinit var newsCategoryViewModel: NewsCategoryViewModel
 
-    @Inject
     lateinit var adapter: NewsCategoryAdapter
 
     private lateinit var binding: ActivityNewsCategoryBinding
@@ -37,6 +37,10 @@ class NewsCategoryActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
+        adapter = NewsCategoryAdapter {
+            NewsSourceActivity.startActivity(this, it)
+        }
+
         val recyclerView = binding.rvNewsCategory
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(
@@ -74,9 +78,13 @@ class NewsCategoryActivity : AppCompatActivity() {
         }
     }
 
-    private fun renderList(articleList: List<String>) {
-        adapter.addData(articleList)
-        adapter.notifyDataSetChanged()
+    private fun renderList(data: List<String>) {
+        data.let {
+            adapter.clearItems()
+            adapter.addItems(it)
+            adapter.notifyDataSetChanged()
+        }
+
     }
 
     private fun injectDependencies() {

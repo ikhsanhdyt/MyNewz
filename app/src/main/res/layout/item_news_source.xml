@@ -6,7 +6,7 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/tvNameCategory"
+        android:id="@+id/tvNameSource"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Sample Text"/>
