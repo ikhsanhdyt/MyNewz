@@ -7,6 +7,7 @@ import com.diavolo.mynewz.data.repository.NewsArticleRepository
 import com.diavolo.mynewz.data.repository.NewsSourceRepository
 import com.diavolo.mynewz.di.ApplicationContext
 import com.diavolo.mynewz.di.module.ApplicationModule
+import com.diavolo.mynewz.utils.NetworkUtils
 import dagger.Component
 import javax.inject.Singleton
 
@@ -24,5 +25,6 @@ interface ApplicationComponent {
     fun getNetworkService(): NetworkService
     fun getNewsSourceRepository(): NewsSourceRepository
     fun getNewsArticleRepository(): NewsArticleRepository
+    fun getNetworkUtils(): NetworkUtils
 
 }

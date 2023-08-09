@@ -4,8 +4,10 @@ import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.diavolo.mynewz.MyNewzApplication
 import com.diavolo.mynewz.data.api.NetworkService
+import com.diavolo.mynewz.di.ActivityContext
 import com.diavolo.mynewz.di.ApplicationContext
 import com.diavolo.mynewz.di.BaseUrl
+import com.diavolo.mynewz.utils.NetworkUtils
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -63,4 +65,8 @@ class ApplicationModule(private val application: MyNewzApplication) {
             .build()
             .create(NetworkService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideNetworkUtils(@ApplicationContext context: Context): NetworkUtils = NetworkUtils(context)
 }

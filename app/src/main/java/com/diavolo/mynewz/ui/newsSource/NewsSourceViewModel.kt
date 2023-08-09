@@ -24,6 +24,7 @@ class NewsSourceViewModel(private val repository: NewsSourceRepository) : ViewMo
 
     private val _intentExtrasFlow = MutableStateFlow<Bundle?>(null)
 
+
     val intentExtrasFlow: StateFlow<Bundle?>
         get() = _intentExtrasFlow.asStateFlow()
 
@@ -38,6 +39,8 @@ class NewsSourceViewModel(private val repository: NewsSourceRepository) : ViewMo
                 }
         }
     }
+
+
 
     fun setIntentData(intent: Intent) {
         // Assign the bundle from the intent extras to the MutableStateFlow

@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.diavolo.mynewz.data.model.Article
-import com.diavolo.mynewz.data.model.Source
 import com.diavolo.mynewz.data.repository.NewsArticleRepository
 import com.diavolo.mynewz.ui.base.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,7 +22,6 @@ class NewsArticleViewModel(private val repository: NewsArticleRepository) : View
 
     val uiState: StateFlow<UiState<List<Article>>> = _uiState
 
-
     private val _intentExtrasFlow = MutableStateFlow<Bundle?>(null)
 
     val intentExtrasFlow: StateFlow<Bundle?>
@@ -38,6 +36,16 @@ class NewsArticleViewModel(private val repository: NewsArticleRepository) : View
                 .collect {
                     _uiState.value = UiState.Success(it)
                 }
+        }
+    }
+
+    fun searchNewsArticle(query: String) {
+        viewModelScope.launch {
+            repository.searchNewsSource(query).catch { e ->
+                _uiState.value = UiState.Error(e.toString())
+            }.collect {
+                _uiState.value = UiState.Success(it)
+            }
         }
     }
 

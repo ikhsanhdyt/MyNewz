@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
@@ -36,6 +37,7 @@ class NewsArticleActivity : AppCompatActivity() {
     private fun initView() {
         getIntentData()
         setupUI()
+        setBindingEvent()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,13 +73,14 @@ class NewsArticleActivity : AppCompatActivity() {
                         }
                     }
                 }
+
             }
         }
     }
 
     private fun renderList(data: List<Article>) {
         data.let {
-            adapter.addItems(it)
+            adapter.setItems(it)
             adapter.notifyDataSetChanged()
         }
 
@@ -89,7 +92,20 @@ class NewsArticleActivity : AppCompatActivity() {
             .activityModule(ActivityModule(this)).build().inject(this)
 
     }
+    private fun setBindingEvent() {
+        binding.searchArticle.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                newsArticleViewModel.searchNewsArticle(p0.toString())
+                return false
+            }
 
+            override fun onQueryTextChange(p0: String?): Boolean {
+
+                return false
+            }
+
+        })
+    }
     private fun setupUI() {
         adapter = NewsArticleAdapter {
             NewsDetailWebViewActivity.startActivity(this, it.url)

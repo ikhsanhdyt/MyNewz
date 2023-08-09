@@ -2,6 +2,7 @@ package com.diavolo.mynewz.data.repository
 
 import com.diavolo.mynewz.data.api.NetworkService
 import com.diavolo.mynewz.data.model.Article
+import com.diavolo.mynewz.data.model.Source
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -17,6 +18,14 @@ class NewsArticleRepository @Inject constructor(private val networkService: Netw
     fun getArticleList(source:String): Flow<List<Article>> {
         return flow {
             emit(networkService.getArticleList(source))
+        }.map {
+            it.articles
+        }
+    }
+
+    fun searchNewsSource(query:String): Flow<List<Article>> {
+        return flow {
+            emit(networkService.searchNewsSource(query))
         }.map {
             it.articles
         }

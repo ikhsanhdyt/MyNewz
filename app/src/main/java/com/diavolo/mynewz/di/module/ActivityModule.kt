@@ -7,11 +7,13 @@ import com.diavolo.mynewz.data.repository.NewsArticleRepository
 import com.diavolo.mynewz.data.repository.NewsCategoryRepository
 import com.diavolo.mynewz.data.repository.NewsSourceRepository
 import com.diavolo.mynewz.di.ActivityContext
+import com.diavolo.mynewz.di.ApplicationContext
 import com.diavolo.mynewz.ui.base.ViewModelProviderFactory
 import com.diavolo.mynewz.ui.newsArticle.NewsArticleViewModel
 import com.diavolo.mynewz.ui.newsCategory.NewsCategoryViewModel
 import com.diavolo.mynewz.ui.newsDetailWebView.NewsDetailWebViewModel
 import com.diavolo.mynewz.ui.newsSource.NewsSourceViewModel
+import com.diavolo.mynewz.utils.NetworkUtils
 import dagger.Module
 import dagger.Provides
 
