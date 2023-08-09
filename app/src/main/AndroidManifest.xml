@@ -14,7 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyNewz"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.newsDetailWebView.NewsDetailWebViewActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.newsArticle.NewsArticleActivity"
             android:exported="false" />

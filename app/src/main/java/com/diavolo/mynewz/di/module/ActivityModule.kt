@@ -9,8 +9,8 @@ import com.diavolo.mynewz.data.repository.NewsSourceRepository
 import com.diavolo.mynewz.di.ActivityContext
 import com.diavolo.mynewz.ui.base.ViewModelProviderFactory
 import com.diavolo.mynewz.ui.newsArticle.NewsArticleViewModel
-import com.diavolo.mynewz.ui.newsCategory.NewsCategoryAdapter
 import com.diavolo.mynewz.ui.newsCategory.NewsCategoryViewModel
+import com.diavolo.mynewz.ui.newsDetailWebView.NewsDetailWebViewModel
 import com.diavolo.mynewz.ui.newsSource.NewsSourceViewModel
 import dagger.Module
 import dagger.Provides
@@ -49,6 +49,14 @@ class ActivityModule(private val activity: AppCompatActivity) {
             ViewModelProviderFactory.ViewModelProviderFactory(NewsArticleViewModel::class) {
                 NewsArticleViewModel(repository)
             })[NewsArticleViewModel::class.java]
+    }
+
+    @Provides
+    fun provideNewsDetailWebViewModel(): NewsDetailWebViewModel {
+        return ViewModelProvider(activity,
+            ViewModelProviderFactory.ViewModelProviderFactory(NewsDetailWebViewModel::class) {
+                NewsDetailWebViewModel()
+            })[NewsDetailWebViewModel::class.java]
     }
 
 }

@@ -36,7 +36,9 @@ class NewsArticleAdapter(private val itemClick: (Article) -> Unit) :
 
         fun bindView(item: Article) {
             with(item) {
-                itemView.setOnClickListener { itemClick(this) }
+                itemView.setOnClickListener {
+                    itemClick(this)
+                }
                 binding.tvNameArticle.text = title
             }
         }

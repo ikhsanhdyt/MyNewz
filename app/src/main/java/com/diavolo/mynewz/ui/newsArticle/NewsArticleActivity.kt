@@ -2,10 +2,10 @@ package com.diavolo.mynewz.ui.newsArticle
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -13,15 +13,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.diavolo.mynewz.MyNewzApplication
-import com.diavolo.mynewz.R
 import com.diavolo.mynewz.data.model.Article
 import com.diavolo.mynewz.databinding.ActivityNewsArticleBinding
-import com.diavolo.mynewz.databinding.ActivityNewsSourceBinding
 import com.diavolo.mynewz.di.component.DaggerActivityComponent
 import com.diavolo.mynewz.di.module.ActivityModule
 import com.diavolo.mynewz.ui.base.UiState
-import com.diavolo.mynewz.ui.newsSource.NewsSourceActivity
-import com.diavolo.mynewz.ui.newsSource.NewsSourceAdapter
+import com.diavolo.mynewz.ui.newsDetailWebView.NewsDetailWebViewActivity
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -95,7 +92,7 @@ class NewsArticleActivity : AppCompatActivity() {
 
     private fun setupUI() {
         adapter = NewsArticleAdapter {
-
+            NewsDetailWebViewActivity.startActivity(this, it.url)
         }
 
         val recyclerView = binding.rvNewsArticle

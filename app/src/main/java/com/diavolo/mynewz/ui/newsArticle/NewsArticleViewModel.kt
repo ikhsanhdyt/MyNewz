@@ -23,6 +23,7 @@ class NewsArticleViewModel(private val repository: NewsArticleRepository) : View
 
     val uiState: StateFlow<UiState<List<Article>>> = _uiState
 
+
     private val _intentExtrasFlow = MutableStateFlow<Bundle?>(null)
 
     val intentExtrasFlow: StateFlow<Bundle?>
